@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Сal"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  targetNamespace="Сal"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="Сal"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <xsd:documentation></xsd:documentation>
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="Сal">
+            <xsd:complexType name="infocal">
+                <xsd:sequence>
+				    <xsd:element name="city" type="xsd:string"></xsd:element>
+                    <xsd:element name="name" type="xsd:string"></xsd:element>
+                    <xsd:element name="data" type="tns:integer"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="infocalYearRequest">
+        <wsdl:part name="infocal" type="xsd:infocal"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="infocalYearResponse">
+        <wsdl:part name="year" type="tns:integer"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="Сal">
+        <wsdl:operation name="getInfoCal">
+            <wsdl:input message="tns:infocalYearRequest"/>
+            <wsdl:output message="tns:infocalYearResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="Сal" type="tns:Сal">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getInfoCal">
+            <soap:operation soapAction="http://soap2/server.php"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="Сal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="Сal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>	
+    <wsdl:service name="Сal">
+        <wsdl:port binding="tns:Сal" name="myСal">
+            <soap:address location="http://soap2/server.php"/>
+        </wsdl:port>		
+    </wsdl:service>
+</wsdl:definitions>
