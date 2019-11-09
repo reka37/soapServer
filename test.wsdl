@@ -32,7 +32,7 @@
     <wsdl:binding name="Сal" type="tns:Сal">
         <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
         <wsdl:operation name="getInfoCal">
-            <soap:operation soapAction="http://soap2/server.php"/>
+            <soap:operation soapAction="http://soapServer/server.php"/>
             <wsdl:input>
                 <soap:body use="literal" namespace="Сal"/>
             </wsdl:input>
@@ -43,7 +43,7 @@
     </wsdl:binding>	
     <wsdl:service name="Сal">
         <wsdl:port binding="tns:Сal" name="myСal">
-            <soap:address location="http://soap2/server.php"/>
+            <soap:address location="http://soapServer/server.php"/>
         </wsdl:port>		
     </wsdl:service>
 </wsdl:definitions>

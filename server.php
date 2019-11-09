@@ -19,13 +19,6 @@ $server=new SoapServer("test.wsdl",[
 		$server->fault(403,'Access denied');
 	} 
 }
-  
-class Info
-{
-	public $city;
-	public $name;
-	public $data;
-}
 
 function getInfoCal($info)
 {
@@ -48,4 +41,3 @@ function generateText($length){
   }
   return $string;
 }
-?>
